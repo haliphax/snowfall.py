@@ -41,7 +41,7 @@ for i in range(prog_len - 1):
 progress[progress_template[prog_len - 1]] = progress_template[prog_len - 1]
 
 with term.fullscreen(), term.hidden_cursor():
-    while not term.inkey(timeout=0.15):
+    while not term.inkey(timeout=0.25):
         out = term.move(0, 0)
 
         for i in range(term.height - 1):
@@ -72,7 +72,7 @@ with term.fullscreen(), term.hidden_cursor():
         layers[last].pop()
         layers[last].insert(0, generate_line(1))
 
-        for i in reversed(range(1, last)):
+        for i in range(1, last):
             if iteration % (i * 2) == 0:
                 layers[i].pop()
                 layers[i].insert(0, generate_line(i + 1))
