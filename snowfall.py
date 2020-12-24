@@ -69,14 +69,14 @@ with term.fullscreen(), term.hidden_cursor():
         stdout.write(out)
         stdout.flush()
         iteration = (iteration + 1) % rollover
-        layers[0].pop()
-        layers[0].insert(0, generate_line(1))
+        layers[last].pop()
+        layers[last].insert(0, generate_line(1))
 
-        for i in range(1, rollover / 2):
+        for i in reversed(range(1, last)):
             if iteration % (i * 2) == 0:
                 layers[i].pop()
                 layers[i].insert(0, generate_line(i + 1))
 
         if iteration == 0:
-            layers[last].pop()
-            layers[last].insert(0, generate_line(layers_length))
+            layers[0].pop()
+            layers[0].insert(0, generate_line(layers_length))
